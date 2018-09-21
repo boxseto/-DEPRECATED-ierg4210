@@ -1,0 +1,131 @@
+/******************    general settings    *******************************/
+@import url('https://fonts.googleapis.com/css?family=Kosugi+Maru&subset=cyrillic,japanese');
+body {
+  font-family: 'Kosugi Maru', sans-serif;
+  padding-top: 110px;
+  }
+
+	  
+/******************    header    *******************************/
+.header{
+  position: absolute;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:9999;}
+	  
+	.header .user_header {
+	  background: #f0f0f0;
+	  height: 30px;
+	  line-height: 15px; }
+		.header .user_header li {
+		  margin-bottom: 0px;
+		  padding: 7px 0; 
+		  display: inline-block; }
+			.header .user_header li:last-child a {
+			  font-size: 15px;
+			  color: #707;
+			  display: inline-block;
+			  padding: 0px 19px; 
+			  border-right: 0px;}
+			.header .user_header li a {
+			  font-size: 15px;
+			  color: #707;
+			  display: inline-block;
+			  border-right: 1px solid rgba(175, 175, 175, 0.3);
+			  padding: 0px 19px; }
+			.header .user_header li:hover a {
+			  text-decoration: none;
+			  color: #f0f; }
+	  
+	.header .main_header {
+	  background: #707;
+	  height: 80px;
+	  line-height: 16px; }	
+    .header .main_header nav div a .logo{
+      max-width: 10%;
+      height: auto;}	
+    .header .main_header nav div .search_container {
+      font-size: 17px;
+      border: none;}
+    .header .main_header nav div .search-container button {
+      margin-right: 16px;
+      background: #ddd;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;}
+      
+/******************    carousel    *******************************/     
+.carousel{
+  width:80%;
+  height:auto;
+  margin: 10px;
+}
+  .carousel div .carousel-item img{
+    width:100%;
+    height:auto;
+  }
+
+
+/******************    today's deal    *******************************/    
+.best_deal{
+  border-style: solid;
+  border-width: 15px;
+  border-color: rgba(119, 0, 119, 1);
+  margin: 10px;
+  width:100%;
+  height:auto;
+  overflow: hidden;
+}
+  .best_deal .title{
+    border-bottom:5px dashed rgba(119, 0, 119, 1);
+    margin: 10px;
+    width:100%;
+    height:auto;
+  }
+    .best_deal .title a{
+      text-decoration: none;
+      text-align: right;
+      background-color:#707;
+      border: 0px;
+    }
+    .best_deal .title a:hover{
+      background-color:#f0f;
+    }
+  .best_deal .row .owl-carousel .item{
+	  line-height: 15px; 
+  }
+    .best_deal .row .owl-carousel .item img{
+      width: 160px;
+      height: 160px;
+      display: block;
+      z-index: 0;
+    }
+    .best_deal .row .owl-carousel .item .item_title{
+      margin-top:5px;
+      font-size: 20px;
+    }
+    .best_deal .row .owl-carousel .item .item_price{
+      color:#F00;
+      font-size: 15px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

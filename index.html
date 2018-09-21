@@ -1,9 +1,212 @@
 <!Doctype html>
 <html>
+
 <head>
-<title>demo page</title>
+
+	<meta charset="utf-8">
+
+	<!--title for the page-->
+	<link rel="shortcut icon" href="img/web_icon.ico">
+	<title>E-commerce</title>
+
+	<!--imported css-->
+	<link rel="stylesheet" href="import/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="import/fontawesome/css/all.css">
+  <link rel="stylesheet" href="import/OwlCarousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="import/OwlCarousel/dist/assets/owl.theme.default.min.css">
+	
+	<!--self-written css-->
+	<link rel="stylesheet" href="css/theme.css">
+  
+	
 </head>
+
 <body>
-this is index
+<!-----------------    header    --------------------------------->
+	<header class="header">
+		<div class="user_header row">
+			<div class="container-fluid">
+				<ul class="float-right">
+					<li>
+						<a href="#">
+							Shopping cart
+							<i class="fas fa-shopping-cart"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Sign in
+							<i class="fas fa-sign-in-alt"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main_header">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="index.html">
+						<img class="logo img-fluid" src="img/web_icon.png">
+					</a>
+          <form class="search_container" action="">
+            <input type="text" placeholder="Find what you like here..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+				</div>
+			</nav>
+		</div>
+	</header>
+<!--------------------    contents    --------------------------------------->
+<div class="container-fluid">
+<div class="row">
+<!--------------------    carousel    --------------------------------------->
+  <div id="demo" class="carousel slide float-right" data-ride="carousel">
+
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="">
+          <img class="img-fluid" src="img/carousel1.jpg">
+          <div class="carousel-caption">
+            <h3>Back To School</h3>
+            <p>Gadget sales for students</p>
+          </div>
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="">
+          <img class="img-fluid" src="img/carousel2.jpg">
+          <div class="carousel-caption">
+            <h3>Happiness</h3>
+            <p>Enjoy shopping here</p>
+          </div>
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="">
+          <img class="img-fluid" src="img/carousel3.jpg">
+          <div class="carousel-caption">
+            <h3>Vest supply chain</h3>
+            <p>Adequate supply just for your need</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+</div>
+
+
+<!--------------------    today's deal    --------------------------------------->
+<div class="row best_deal">
+    <div class="row title">
+      <div class="col-11">
+        <h1>Today's deal</h1>
+      </div>
+      <div class="col-1">
+        <a class="btn btn-primary " href="">more</a>
+      </div>
+    </div>
+    <div class="row" name="carousel_row">
+      <div class="col-12 owl-carousel">
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Shoes</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Two Shoe</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Converse</p>
+          <p class="item_price">$700</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Wore shoes</p>
+          <p class="item_price">$150</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Good shoes</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Buy it</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Expensive two</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/product1.jpg">
+          <p class="item_title">Fantastic shoes</p>
+          <p class="item_price">$200</p>
+        </div>
+        <div class="item">
+          <img src="img/products/L.jpg">
+          <p class="item_title">Is</p>
+          <p class="item_price">$1</p>
+        </div>
+        <div class="item">
+          <img src="img/products/O.jpg">
+          <p class="item_title">This</p>
+          <p class="item_price">$1.</p>
+        </div>
+        <div class="item">
+          <img src="img/products/S.jpg">
+          <p class="item_title">Loss</p>
+          <p class="item_price">$11</p>
+        </div>
+        <div class="item">
+          <img src="img/products/S2.jpg">
+          <p class="item_title">?</p>
+          <p class="item_price">$1_</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+<!--imported js-->
+<script src="import/jquery.js"></script>
+<script src="import/bootstrap/js/bootstrap.js"></script>
+<script src="import/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="import/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="import/OwlCarousel/dist/owl.carousel.min.js"></script>
+
+
+<!--self-written js-->
+<script src="js/theme.js"></script>
+
+
 </body>
 </html>
