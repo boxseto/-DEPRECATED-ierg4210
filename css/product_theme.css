@@ -1,6 +1,6 @@
 /******************    breadcrumb    *********************/
 .cat_title{
-  border-top: 7px solid #f03;
+  border-top: 10px solid #f03;
   padding-left: 15px;
   border-bottom: 1px solid rgba(0,0,0,0.3);
 }
@@ -22,3 +22,76 @@
       font-size: 1.2rem;
       color: #f03;
     }
+
+/******************    image    *********************/
+.item div.img-zoom{
+  padding:15px;
+  width:100%;
+  height:100%;
+}
+  .item div.img-zoom img{
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+  
+.item div.item-details{
+  padding:15px;
+}
+  .item div.item-details .item-title{
+    padding-left:10px;
+    background-color: rgba( 255, 0, 51, 0.1);
+    font-size: 2.2rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+  }
+  .item div.item-details .item-tag{
+    padding:10px;
+    padding-right:0px;
+  }
+  .item div.item-details .item-price{
+    padding:10px;
+    padding-left:0px;
+    color: #f03;
+    font-size: 2.2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+  .item div.item-details .quantity{
+    padding:10px;
+    padding-left:0px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+  .item div.item-details .item-description{
+    padding:10px;
+    padding-left:0px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+  .item div.item-details .item-action{
+    padding-left:0px;
+  }
+  .item div.item-details .add_cart{
+    background-color: #707;
+    border: 1px solid #707;
+    margin:10px;
+    margin-left:0px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

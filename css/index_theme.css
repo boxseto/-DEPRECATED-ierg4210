@@ -146,7 +146,9 @@ body {
           height:50px;
           width:50px;
         }
-        .expand_menu #content ul li div p{
+        .expand_menu #content ul li div a.title{
+          color:#000;
+          text-decoration: none;
           width:200px;
           height:50px;
           font-size: 20px;
@@ -154,6 +156,9 @@ body {
           margin-right:10px;
           margin-bottom:0px;
         }
+          .expand_menu #content ul li div a.title:hover{
+            color:#f0f0f0;
+          }
         .expand_menu #content ul li div .ui-spinner{
           margin:5px;
         }
@@ -261,13 +266,15 @@ body {
 	  line-height: 15px;     
   }
     .best_deal .row .owl-carousel .item img{
+      margin-bottom:5px;
       width: 160px;
       height: 160px;
       display: block;
       z-index: 0;
     }
     .best_deal .row .owl-carousel .item .item_title{
-      margin-top:5px;
+      text-decoration: none;
+      color:#000;
       font-size: 20px;
     }
     .best_deal .row .owl-carousel .item a{
