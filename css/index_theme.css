@@ -1,7 +1,7 @@
 /******************    general settings    *******************************/
-@import url('https://fonts.googleapis.com/css?family=Kosugi+Maru&subset=cyrillic,japanese');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 body {
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   padding-top: 110px;
   }
 
@@ -263,7 +263,8 @@ body {
       background-color:#f0f;
     }
   .best_deal .row .owl-carousel .item{
-	  line-height: 15px;     
+	  line-height: 15px;
+     width:210px;	  
   }
     .best_deal .row .owl-carousel .item img{
       margin-bottom:5px;
