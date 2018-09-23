@@ -1,0 +1,90 @@
+/******************    breadcrumb    *********************/
+.cat_title{
+  border-top: 7px solid #0f0;
+  color: #0f0;
+  padding-left: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+  .cat_title .breadcrumb {
+    margin:0px;
+    padding:0px;
+    padding-right:16px;
+    padding-left:16px;
+    list-style: none;
+    background-color: #fff;
+    width:100%;
+  }
+    .cat_title ul.breadcrumb li+li:before {
+      padding: 8px;
+      color: black;
+      content: ">\00a0";
+    }
+    .cat_title ul.breadcrumb li:last-child{
+      font-size: 1.2rem;
+      color: #0f0;
+    }
+    
+/******************    product list    *********************/
+ul.product_list{
+  width:100%;
+  list-style: none;
+  padding: 10px;
+  overflow:auto;
+}
+  ul.product_list li{
+    padding: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width:200px;
+    border: 1px solid #707;
+    border-radius:10px;
+    overflow:hidden;
+    float:left;
+  }
+    ul.product_list li img{
+      height:200px;
+      width:200px;
+    }
+    ul.product_list li div.title{
+      color:#000;
+      padding:0px;
+      margin-bottom:5px;
+      font-size: 1.5rem;
+      width:200px;
+      border:0px;
+      text-align:center;
+      text-decoration:none;
+    }
+    ul.product_list li p.price{
+      color:#f03;
+      padding:0px;
+      margin-bottom:5px;
+      font-size: 1.5rem;
+      width:200px;
+      border:0px;
+      text-align:center;
+    }
+    ul.product_list li a.details{
+      width:100%;
+      margin-bottom:5px;
+    }
+    ul.product_list li button.add_cart{
+      border-color: #707;
+      background-color: #707;
+      width:100%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

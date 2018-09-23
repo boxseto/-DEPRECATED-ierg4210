@@ -1,9 +1,30 @@
- $(function(){
+/*******************    carousel    ***********************/
+$(function(){
     $('.carousel').carousel({
       interval: 2000
     });
 });
 
+/*******************    expanded cart    ***********************/
+$('.expand_menu').css("display", "none");
+
+$( "#cart" ).hover(
+  function(){
+    $(".expand_menu").css("display", "block");
+  }
+);
+$( ".expand_menu" ).mouseleave(
+  function(){
+    $(".expand_menu").css("display", "none");
+  }
+);
+
+$( function() {
+  var spinner = $( ".qty" ).spinner();
+});
+
+
+/*******************    best buy    ***********************/
 var owl = $('.owl-carousel');
 owl.owlCarousel({
     loop:true,
