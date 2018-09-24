@@ -30,8 +30,8 @@
   height:100%;
 }
   .item div.img-zoom img{
-    width: 420px;
-    height: 420px;
+    width: 100%;
+    height: auto;
     border: 1px solid rgba(0,0,0,0.3);
   }
   
@@ -48,7 +48,7 @@
   .item div.item-details .item-tag{
     padding:10px;
     padding-right:0px;
-  }
+  overflow:auto;}
   .item div.item-details .item-price{
     padding:10px;
     padding-left:0px;

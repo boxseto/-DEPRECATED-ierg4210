@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 body {
   font-family: 'Josefin Sans', sans-serif;
-  padding-top: 110px;
+  padding-top: 90px;
   }
 
 	  
@@ -19,6 +19,7 @@ body {
 	  background: #f0f0f0;
 	  height: 30px;
     display: flex;
+		overflow: auto;
 	  line-height: 15px; }
 		.header .user_header #cat_list{
       padding:0px;
@@ -48,16 +49,19 @@ body {
 	  
 	.header .main_header {
 	  background: #707;
-	  height: 80px;
+	  height: 60px;
 	  line-height: 16px; }	
     .header .main_header nav{
+			height:100%;
       padding:0px;}	
-    .header .main_header .row{
+    .header .main_header nav .row{
+			height: 100%;
       width:100%;}	
       .header .main_header nav a{
+				height:100%;
         padding:0px;}		
         .header .main_header nav a .logo{
-          height: 80px; min-width: 80px; margin-left: 15px;}	
+          height: 100%; width: auto; margin-left: 15px;}	
       .header .main_header nav .search_container {
         padding-top: 10px;
         padding-bottom: 10px;
@@ -264,7 +268,7 @@ body {
     }
   .best_deal .row .owl-carousel .item{
 	  line-height: 15px;
-     width:210px;	  
+     width:200px;	  
   }
     .best_deal .row .owl-carousel .item img{
       margin-bottom:5px;
