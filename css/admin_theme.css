@@ -1,0 +1,62 @@
+/******************    general settings    *******************************/
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  }
+
+	  
+/******************    header    *******************************/
+.header{
+  background-color: #707;
+  height:100vh;}
+  .header h2{
+    font-size: 3rem;
+    color: #fff;
+    margin: 10px 10px 10px 10px;
+  }
+  .header h3{
+    font-size: 2.3rem;
+    color: #fcf;
+    margin: 10px 10px 10px 10px;
+  }
+  .header ul li a{
+    font-size: 1.5rem;
+    color: #0f0;
+    margin: 10px 10px 10px 10px;
+  }
+    .header ul li a:hover{
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+/******************    table    *******************************/
+.panel {
+	margin: 20px 20px 20px 0;
+	border: 1px solid #ddd;
+	background-color: #fcfcfc;
+}
+  .panel .btn {
+    margin: 20px 15px 20px 0;
+    transition: background-color .3s ease;
+  }
+  .table-filter {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+  }
+    .table-filter tbody tr{
+      margin: 10px 0 0 0;
+    }
+    .table-filter tbody tr:hover {
+      cursor: pointer;
+      background-color: #eee;
+    }
+      .table-filter tbody tr td img{
+        width: 100%;
+        display:block;
+      }
+      .table-filter tbody tr td .title{
+        color: #707;
+      }
+      .table-filter tbody tr td button{
+        width: 100%;
+      }

@@ -1,0 +1,68 @@
+/******************    breadcrumb    *********************/
+.cat_title{
+  border-top: 10px solid #000;
+  padding-left: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+  .cat_title .breadcrumb {
+    margin:0px;
+    padding:0px;
+    padding-right:16px;
+    padding-left:16px;
+    list-style: none;
+    background-color: #fff;
+    width:100%;
+  }
+    .cat_title ul.breadcrumb li+li:before {
+      padding: 8px;
+      color: black;
+      content: ">\00a0";
+    }
+    .cat_title ul.breadcrumb li:last-child{
+      font-size: 1.2rem;
+      color: #000;
+    }
+
+
+/******************    user_login    *********************/
+.login-form-1{
+    padding: 9%;
+    background:#707;
+}
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
+}
+.login-form-2{
+    padding: 9%;
+    background: #333;
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.login-form-1 .btnSubmit:hover {
+    color: #fff;
+    background-color: #333;
+}
+.login-form-2 .btnSubmit:hover {
+    color: #fff;
+    background-color: #707;
+}
+
+
+
+
+
+

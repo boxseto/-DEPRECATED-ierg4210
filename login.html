@@ -7,7 +7,7 @@
 
 	<!--title for the page-->
 	<link rel="shortcut icon" href="img/web_icon.ico">
-	<title>Categories</title>
+	<title>Login</title>
 
 	<!--imported css-->
 	<link rel="stylesheet" href="import/bootstrap/css/bootstrap.css">
@@ -18,7 +18,7 @@
 	
 	<!--self-written css-->
 	<link rel="stylesheet" href="css/index_theme.css">
-	<link rel="stylesheet" href="css/product_theme.css">
+	<link rel="stylesheet" href="css/login_theme.css">
   
 </head>
 
@@ -181,39 +181,35 @@
   <div class="row cat_title">
     <ul class="breadcrumb">
       <li><a href="index.html">Home</a></li>
-      <li><a href="category.html">Categories</a></li>
-      <li><a>Product</a></li>
+      <li><a>Login</a></li>
     </ul>
   </div>
-  <div class="row item">
-    <div class="col-4 img-zoom">
-      <img id="myimage" src="img/products/product5.jpg">
-      <div id="myresult" class="img-zoom-result"></div>
-    </div>
-    <div class="col-8 item-details">
-      <div class="row item-title">Some make-up Tool</div>
-      <div class="row">
-        <div class="col-2 item-tag">Price: </div>
-        <div class="col-10 item-price">$45</div>
+  <div class="row">
+    <div class="col-md-6 login-form-1">
+      <h3>User Login</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username"/>
       </div>
-      <div class="row">
-        <div class="col-2 item-tag">Description: </div>
-        <div class="col-10 item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit risus enim, id dapibus orci malesuada accumsan. Sed quis varius ipsum, nec dignissim odio. Etiam convallis in tortor id fermentum. Quisque nec tortor at sem mattis vestibulum. Nulla et elit eu diam efficitur eleifend. Phasellus ut viverra turpis, et iaculis metus. Duis eu finibus est.</div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password *"/>
       </div>
-      <div class="row">
-        <div class="col-2 item-tag">Quantity: </div>
-        <div class="col-10 quantity">
-          <input class="qty" min="0" value="1" readonly>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-2 item-tag"></div>
-        <div class="col-10 item-action">
-          <button class="btn btn-primary add_cart"><i class="fa fa-plus"></i> Add to cart</button>
-        </div>  
+      <div class="form-group">
+        <input type="submit" class="btnSubmit" value="Login" />
       </div>
     </div>
-  </div>
+    <div class="col-md-6 login-form-2">
+      <h3>Admin Login</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Adminname"/>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password"/>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btnSubmit" value="Login" />
+      </div>
+    </div>
+</div>
 
 <!-------------------------     Footer     ------------------------>
 <footer>
