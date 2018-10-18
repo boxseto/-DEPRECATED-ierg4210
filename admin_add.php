@@ -23,7 +23,7 @@
 <!-------------------    contents    -------------------------------------->
 <div class="container-fluid">
 	<div class="row">
-<!----------------       Navigation   -------------------------------->
+<!----------------     Navigation---------------------------->
     <div class="col-2 header">
       <h2>Admin</h2>
       <h3>Add</h3>
@@ -38,13 +38,14 @@
     </div>
 
     <div class="col-10">
-<!-----------------    Add category    --------------------------------->
+<!----------------    Add category    --------------------------------->
       <div class="card">
         <div class="card-header">
           Add category
         </div>
         <div class="card-body">
           <form method="POST" action="upload.php">
+            <input type="hidden" name="mode" value="0"/> 
             Add a Category: <input type="text" name="new_category"><br><br>
             <input type="submit" class="btn btn-secondary" value="Add">
           </form>
@@ -57,16 +58,17 @@
           Add products
         </div>
         <div class="card-body">
-          <form method="POST" action="upload.php">
+          <form method="POST" action="upload.php" enctype="multipart/form-data">
+            <input type="hidden" name="mode" value="1"/> 
             Choose a Category: 
             <select name="category">
               <?php 
                 $conn = new mysqli("localhost","root", "toor", "IERG4210");
-                $sql = "SELECT name from categories ORDER BY catid ASC";
+                $sql = "SELECT catid, name from categories ORDER BY catid ASC";
                 $result = $conn->query($sql);
                 if($result->num_rows > 0){
                   while($row = $result->fetch_assoc()){
-                    echo "<option value=\"" . $row["name"] . "\">" . $row["name"] . "</option>"
+                    echo "<option value=\"" . $row["catid"] . "\">" . $row["name"] . "</option>";
                   }
                 }
                 $conn->close();
@@ -75,7 +77,7 @@
             <br><br>
             Product Name: <input type="text" name="name"><br><br>
             Product Price: $<input type="number" min="0" name="price"><br><br>
-            Product Description: <br><textarea name="paragraph_text" naem="description" cols="50" rows="10"></textarea><br><br>
+            Product Description: <br><textarea name="description" cols="50" rows="10"></textarea><br><br>
             Product image: <input type="file" name="image"><br><br>
             <input type="submit" class="btn btn-secondary" value="Add">
           </form>
