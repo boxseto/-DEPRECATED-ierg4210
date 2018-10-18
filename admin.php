@@ -45,23 +45,27 @@
 			</div>
 			<table class="table table-filter">
 				<tbody>
-					<tr class="row">
-						<td class="col-1">
-              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+					<?php
+						$conn = new mysqli("localhost", "root", "toor", "IERG4210");
+						$sql = "SELECT * FROM products ORDER BY pid ASC";
+						$result = $conn->query($sql);
+						if($result->num_rows > 0){
+							while($row = $result->fetch_assoc()){
+								echo "<tr class=\"row\">\n<td class=\"col-1\">\n
+              <img src=\"img/products/" . $row["image"] . "\">\n
+            </td>\n<td class=\"col-10\">\n<div class=\"media-body\">\n
+									<h4 class=\"title\">\n" . $row["name"] . "\n</h4>\n
+									<p class=\"summary\">" . $row["description"] . "</p>\n
+								</div>\n
+            </td>\n
+						<td class=\"col-1\">\n
+              <a class=\"btn btn-secondary\" href=\"admin_info.html\">More</button>
             </td>
-						<td class="col-10">
-								<div class="media-body">
-									<h4 class="title">
-										Lorem Impsum
-									</h4>
-									<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-								</div>
-            </td>
-						<td class="col-1">
-              <a class="btn btn-secondary" href="admin_info.html">More</button>
-            </td>
-					</tr>
-        </tbody>
+					</tr>";
+							}
+						}
+					?>
+			  </tbody>
 			</table>
 		</div>
 	</div>

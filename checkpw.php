@@ -14,7 +14,7 @@ $result = $conn->query($sql);
 
 if($result->num_rows > 0){
 	if($mode == "0") header('Location: index.html');
-	if($mode == "1") header('Location: admin.html');
+	if($mode == "1") header('Location: admin.php');
 }else{
 	header('Location: login.html');
 }
