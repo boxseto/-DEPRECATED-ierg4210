@@ -12,10 +12,10 @@ if( $mode == "0" ){
 	if( $conn->query($sql) === TRUE ){
 		header("Location: admin.html");
 	}else{
-		Header("Location: admin_add.php");
+		header("Location: admin_add.php");
 	}
 }else if($mode == "1"){
-	$sql = "INSERT INTO products (catid, name, price, description) VALUES ( \"$cat\", \"$name\", \"$price\", \"$desc\" )";
+	$sql = "INSERT INTO products (catid, name, price, description, image) VALUES ( $cat, \"$name\", \"$price\", \"$desc\", \"" . $_FILES['image']['name'] . "\")";
 	if( $conn->query($sql) === TRUE ){
 		if(isset($_FILES['image'])){
 			$errors = array();
@@ -33,13 +33,15 @@ if( $mode == "0" ){
 			}
 			if(empty($errors)==true){
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
-				header("Location: admin.html");	
+				header("Location: admin.php");	
 			}else{
-				header("Location: admin_add.php");	
+				echo "fail file upload";
+				//header("Location: admin_add.php");	
 			}
 		}
 	}else{
-		header("Location: admin_add.php");
+		echo $sql . "fail insert";
+		//header("Location: admin_add.php");
 	}
 }
 

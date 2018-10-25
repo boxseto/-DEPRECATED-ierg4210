@@ -32,11 +32,11 @@
             <li><a href="index.php">Home</a></li>
 						<?php
 							$conn = new mysqli("localhost","root","toor","IERG4210");
-							$sql = "SELECT name FROM categories";
+							$sql = "SELECT * FROM categories";
 							$result = $conn->query($sql);
 							if($result->num_rows > 0){
 								while($row = $result->fetch_assoc()){
-									echo "<li><a href=\"category.html\">" . $row["name"] . "</a></li>";
+									echo "<li><a href=\"category.php?cat=" . $row["catid"] . "\">" . $row["name"] . "</a></li>";
 								}
 							}
 							$conn->close();
@@ -167,11 +167,11 @@
 				if($conn->connect_error){
 					die($conn->connect_error);
 				}
-        $sql = "SELECT name FROM categories ORDER BY catid ASC";
+        $sql = "SELECT * FROM categories ORDER BY catid ASC";
         $result = $conn->query($sql);
 				if($result->num_rows > 0){
 					while($row = $result->fetch_assoc()){
-						echo "<li><a href=\"category.html\">" . $row["name"] . "</a></li>";
+						echo "<li><a href=\"category.php?cat=" . $row["catid"]  . "\">" . $row["name"] . "</a></li>";
 					}
 				}
 				$conn->close();	

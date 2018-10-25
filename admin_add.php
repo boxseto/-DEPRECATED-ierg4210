@@ -29,7 +29,7 @@
       <h3>Add</h3>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" href="admin.html"><i class="fas fa-table"></i> Table</a>
+          <a class="nav-link" href="admin.php"><i class="fas fa-table"></i> Table</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fas fa-plus-circle"></i> Add</a>

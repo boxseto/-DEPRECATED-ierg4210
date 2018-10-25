@@ -47,7 +47,7 @@
 				<tbody>
 					<?php
 						$conn = new mysqli("localhost", "root", "toor", "IERG4210");
-						$sql = "SELECT * FROM products ORDER BY pid ASC";
+						$sql = "SELECT * FROM products ORDER BY catid, pid ASC";
 						$result = $conn->query($sql);
 						if($result->num_rows > 0){
 							while($row = $result->fetch_assoc()){
@@ -59,7 +59,9 @@
 								</div>\n
             </td>\n
 						<td class=\"col-1\">\n
-              <a class=\"btn btn-secondary\" href=\"admin_info.html\">More</button>
+             <form method=\"post\" action=\"admin_info.php\">\n
+							 <input type=\"hidden\" name=\"pid\" value=\"" . $row["pid"] . "\" ></input>\n
+							 <input type=\"submit\" class=\"btn btn-secondary\" value=\"More\" ></input>\n</form>
             </td>
 					</tr>";
 							}
@@ -83,7 +85,6 @@
 
 
 <!--self-written js-->
-
 
 </body>
 </html>
