@@ -75,9 +75,7 @@ if( $mode == "0" ){
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
         try {
-          generateThumbnail("img/products/" . $file_name, 100, 50, 65);
-        }catch (ImagickException $e) {
-          echo $e->getMessage();
+          makeThumbnails("img/products/" . $file_name);
         }catch (Exception $e) {
           echo $e->getMessage();
         }
