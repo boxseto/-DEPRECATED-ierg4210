@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 //https://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image
 function generateThumbnail($img, $width, $height, $quality = 90)
 {
