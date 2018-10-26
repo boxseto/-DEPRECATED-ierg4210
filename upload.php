@@ -10,21 +10,22 @@ $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 if( $mode == "0" ){
 	$sql = "INSERT INTO categories (name) VALUES ( \"$new_cat\" )";
 	if( $conn->query($sql) === TRUE ){
-		header("Location: admin.html");
+		header("Location: admin.php");
 	}else{
 		header("Location: admin_add.php");
 	}
 }else if($mode == "1"){
 	$sql = "INSERT INTO products (catid, name, price, description, image) VALUES ( $cat, \"$name\", \"$price\", \"$desc\", \"" . $_FILES['image']['name'] . "\")";
 	if( $conn->query($sql) === TRUE ){
+		$pid = $conn->insert_id;
 		if(isset($_FILES['image'])){
 			$errors = array();
-			$file_name = $_FILES['image']['name'];
 			$file_size = $_FILES['image']['size'];
 			$file_tmp = $_FILES['image']['tmp_name'];
 			$file_type = $_FILES['image']['type'];
 			$file_ext = strtolower(end(explode('.',$_FILES['image']['name'])));
 			$expensions = array("jpeg", "jpg", "png");
+			$file_name = $pid . "." . $file_ext;
 			if(in_array($file_ext,$expensions)===false){
 				$errors[]="extensions not allowed";
 			}
@@ -32,6 +33,8 @@ if( $mode == "0" ){
 				$errors[]="File larger than 2MB";
 			}
 			if(empty($errors)==true){
+				$sql = "UPDATE products SET image=\"" . $file_name . "\" WHERE pid=" . $pid;
+				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
 				header("Location: admin.php");	
 			}else{

@@ -83,7 +83,20 @@
       <ul>
         <li>
           <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
+            <a href="product.php"><img src="img/products/product3.jpg"></a>
+            <a href="product.php" class="title">Item</a>
+            <div class="quantity">
+              <input class="qty" min="0" value="1" readonly>
+            </div>  
+            <div class="info">
+              <div class="price">$20</div>
+              <a href="#"> Delete </a>
+            </div>  
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <a href="product.php"><img src="img/products/product3.jpg"></a>
             <a href="product.html" class="title">Item</a>
             <div class="quantity">
               <input class="qty" min="0" value="1" readonly>
@@ -96,21 +109,8 @@
         </li>
         <li>
           <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
+            <a href="product.php"><img src="img/products/product3.jpg"></a>
+            <a href="product.php" class="title">Item</a>
             <div class="quantity">
               <input class="qty" min="0" value="1" readonly>
             </div>  
@@ -156,25 +156,30 @@
 <!--------------------    contents    --------------------------------------->
 <div class="container-fluid">
   <div class="row cat_title">
+<?php
+	$catid = isset($_REQUEST["cat"]) ? htmlspecialchars($_GET["cat"]) : 1 ;
+	$conn = new mysqli("localhost","root", "toor", "IERG4210");
+	$sql = "SELECT * from categories WHERE catid=". $catid;
+	$result=$conn->query($sql);
+	$row = $result->fetch_assoc();
+?>	
     <ul class="breadcrumb">
       <li><a href="index.php">Home</a></li>
-      <li><a>Categories</a></li>
+      <li><a><?php echo $row['name'];?></a></li>
     </ul>
   </div>
   <div class="row">
     <ul class="product_list">
 		<?php
-			$catid = isset($_REQUEST["cat"]) ? htmlspecialchars($_GET["cat"]) : 1 ;
-			$conn = new mysqli("localhost","root", "toor", "IERG4210");
 			$sql = "SELECT * FROM products WHERE catid=" . $catid;
 			$result = $conn->query($sql);
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()){
 					echo"      <li>";
-					echo"        <a href=\"product.html?pid=" . $row["pid"] . "\"><img src=\"img/products/" . $row["image"] . "\"></a>";
-					echo"        <div class=\"title\" ><a href=\"product.html?pid=" . $row["pid"] . "\">Toliet paper</a></div>";
+					echo"        <a href=\"product.php?pid=" . $row["pid"] . "\"><img src=\"img/products/" . $row["image"] . "\"></a>";
+					echo"        <div class=\"title\" ><a href=\"product.php?pid=" . $row["pid"] . "\">" . $row['name'] . "</a></div>";
 					echo"        <p class=\"price\">$10</p>";
-					echo"        <a href=\"product.html?pid=" . $row["pid"] . "\" class=\"btn btn-success details\"><i class=\"fas fa-search\"></i> Details</a>";
+					echo"        <a href=\"product.php?pid=" . $row["pid"] . "\" class=\"btn btn-success details\"><i class=\"fas fa-search\"></i> Details</a>";
 					echo"        <button class=\"btn btn-primary add_cart\"><i class=\"fas fa-plus\"></i> Add to cart</button>";
 					echo"      </li>";
  

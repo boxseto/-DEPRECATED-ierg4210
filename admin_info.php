@@ -82,8 +82,9 @@
 								}
               ?>
            </select>
+						<input type="submit" class="btn btn-warning" name="catdelete" value="Delete this cateory and all its products"/>
             <br><br>
-            Change Name: <input type="text" name="name" value="<?php echo $row["name"];?>"/><br><br>
+            Change Name: <input type="text" name="name" required="required" value="<?php echo $row["name"];?>"/><br><br>
             Change Price: $<input type="number" min="0" name="price" value="<?php echo $row["price"];?>"/><br><br>
             Change Description: <br><textarea name="desc" cols="50" rows="10"><?php echo $row["description"];?></textarea><br><br>
             Change image (Current is <?php echo $row["image"];?>): <input type="file" name="image"/><br><br>

@@ -46,7 +46,7 @@
         <div class="card-body">
           <form method="POST" action="upload.php">
             <input type="hidden" name="mode" value="0"/> 
-            Add a Category: <input type="text" name="new_category"><br><br>
+            Add a Category: <input type="text" name="new_category" required="required" pattern="^[\w\-]+$"/><br><br>
             <input type="submit" class="btn btn-secondary" value="Add">
           </form>
         </div>
@@ -75,11 +75,11 @@
               ?>
             </select>
             <br><br>
-            Product Name: <input type="text" name="name"><br><br>
-            Product Price: $<input type="number" min="0" name="price"><br><br>
+            Product Name: <input type="text" required="required" name="name" pattern="^[\w\-]+$"/><br><br>
+            Product Price: $<input type="number" min="0" required="required" name="price" pattern="^\d+\.?\d*$"/><br><br>
             Product Description: <br><textarea name="description" cols="50" rows="10"></textarea><br><br>
-            Product image: <input type="file" name="image"><br><br>
-            <input type="submit" class="btn btn-secondary" value="Add">
+            Product image: <input type="file" required="required" name="image" accept="image/*"/><br><br>
+            <input type="submit" class="btn btn-secondary" value="Add"/>
           </form>
         </div>
       </div>

@@ -29,41 +29,18 @@
 			<div class="container-fluid">
         <div class="row">
           <ul id="cat_list">
-            <li>
-              <a href="index.html">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Food
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Snacks
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Toys
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Household
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Daily
-              </a>
-            </li>
-            <li>
-              <a href="category.html">
-                Books
-              </a>
-            </li>
+            <li><a href="index.php">Home</a></li>
+						<?php
+							$conn = new mysqli("localhost","root","toor","IERG4210");
+							$sql = "SELECT * FROM categories";
+							$result = $conn->query($sql);
+							if($result->num_rows > 0){
+								while($row = $result->fetch_assoc()){
+									echo "<li><a href=\"category.php?cat=" . $row["catid"] . "\">" . $row["name"] . "</a></li>";
+								}
+							}
+							$conn->close();
+						?>
           </ul>
           <ul id="user_list">
             <li>
@@ -86,7 +63,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
         <div class="row">
           <div class="col-1">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img class="logo img-fluid" src="img/web_icon.png">
             </a>
           </div>
@@ -100,7 +77,8 @@
 			</nav>
 		</div>
 	</header>
-  <!--------------------    Expended cart    --------------------------------------->
+
+ <!--------------------    Expended cart    --------------------------------------->
   <div class="expand_menu">
     <div id="content">
       <ul>
@@ -177,28 +155,42 @@
     </div>
   </div>
 <!--------------------    contents    --------------------------------------->
+<?php
+	$pid = isset($_GET['pid']) ? htmlspecialchars($_GET['pid']) : 1;
+	$conn = new mysqli("localhost", "root", "toor", "IERG4210");
+	$sql = "SELECT * FROM categories WHERE catid IN (SELECT catid FROM products WHERE pid=" . $pid . ")";
+	$result = $conn->query($sql);
+	$bread = $result->fetch_assoc();
+	$sql = "SELECT * FROM products WHERE pid=". $pid;
+	$result = $conn->query($sql);
+	if($result->num_rows > 0){
+		$row = $result->fetch_assoc();
+	}
+	$conn->close();
+?>
+
 <div class="container-fluid">
   <div class="row cat_title">
     <ul class="breadcrumb">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="category.html">Categories</a></li>
-      <li><a>Product</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="category.php?cat=<?php echo $bread['catid'];?>"><?php echo $bread['name'];?></a></li>
+      <li><a><?php echo $row['name'];?></a></li>
     </ul>
   </div>
   <div class="row item">
     <div class="col-4 img-zoom">
-      <img id="myimage" src="img/products/product5.jpg">
+      <img id="myimage" src="<?php echo "img/products/".$row['image']; ?>">
       <div id="myresult" class="img-zoom-result"></div>
     </div>
     <div class="col-8 item-details">
-      <div class="row item-title">Some make-up Tool</div>
+      <div class="row item-title"><?php echo $row['name']; ?></div>
       <div class="row">
         <div class="col-2 item-tag">Price: </div>
-        <div class="col-10 item-price">$45</div>
+        <div class="col-10 item-price">$<?php echo $row['price']; ?></div>
       </div>
       <div class="row">
         <div class="col-2 item-tag">Description: </div>
-        <div class="col-10 item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit risus enim, id dapibus orci malesuada accumsan. Sed quis varius ipsum, nec dignissim odio. Etiam convallis in tortor id fermentum. Quisque nec tortor at sem mattis vestibulum. Nulla et elit eu diam efficitur eleifend. Phasellus ut viverra turpis, et iaculis metus. Duis eu finibus est.</div>
+        <div class="col-10 item-description"><?php echo $row['description']; ?></div>
       </div>
       <div class="row">
         <div class="col-2 item-tag">Quantity: </div>

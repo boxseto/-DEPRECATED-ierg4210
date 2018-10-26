@@ -1,11 +1,19 @@
 <?php
-$pid = $_POST['pid'];
+$pid = htmlspecialchars($_POST['pid']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 
 if( isset($_POST['change'])){
 	$sql = "UPDATE products SET catid=" . $_POST['catid'] . ", name=\"" . $_POST['name'] . "\", price=" . $_POST['price'] . ", description=\"" . trim($_POST['desc']) . "\" WHERE pid=" . $pid;
 } else if ( isset($_POST['delete'])){
+	$sql = "SELECT * FROM products WHERE pid=" . $pid;
+		$result = $conn->query($sql);
+		if($result->num_rows > 0){
+			$row = $result->fetch_assoc();
+			unlink('img/products/' . $row['image']);
+		}
 	$sql = "DELETE FROM products WHERE pid=" . $pid;
+} else if(isset($_POST['catdelete'])){
+	$sql = "DELETE FROM products WHERE catid=" . $_POST['catid'];
 }else{
 	echo "idk what are you doing";
 }
@@ -37,15 +45,14 @@ if($conn->query($sql) === TRUE){
 			}
 		}
 	} else if(isset($_POST['delete'])){
-		$sql = "SELECT * FROM products WHERE pid=" . $pid;
-		$result = $conn->query($sql);
-		if($result->num_rows > 0){
-			$row = $result->fetch_assoc();
-			unlink('img/products/' . $row['image']);
-		}
+		
+	} else if(isset($_POST['catdelete'])){
+		$sql = "DELETE FROM categories WHERE catid=" . $_POST['catid'];
+		$conn->query($sql);
+
 	}
-	header("Location: admin.php");
 	$conn->close();
+	header("Location: admin.php");
 }else{
 	$conn->close();
 	header("location: admin_info.php");
