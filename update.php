@@ -1,4 +1,23 @@
 <?php
+function generateThumbnail($img, $width, $height, $quality = 90)
+{
+    if (is_file($img)) {
+        $imagick = new Imagick(realpath($img));
+        $imagick->setImageFormat('jpeg');
+        $imagick->setImageCompression(Imagick::COMPRESSION_JPEG);
+        $imagick->setImageCompressionQuality($quality);
+        $imagick->thumbnailImage($width, $height, false, false);
+        $filename_no_ext = reset(explode('.', $img));
+        if (file_put_contents($filename_no_ext . '_thumb' . '.jpg', $imagick) === false) {
+            throw new Exception("Could not put contents.");
+        }
+        return true;
+    }
+    else {
+        throw new Exception("No valid image provided with {$img}.");
+    }
+}
+
 $pid = htmlspecialchars($_POST['pid']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 
@@ -38,6 +57,13 @@ if($conn->query($sql) === TRUE){
 				$sql = "UPDATE products SET image=\"" . $file_name  . "\" WHERE pid=" . $pid;
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
+        try {
+          generateThumbnail("img/products/" . $file_name, 100, 50, 65);
+        }catch (ImagickException $e) {
+          echo $e->getMessage();
+        }catch (Exception $e) {
+          echo $e->getMessage();
+        }
 				header("Location: admin.php");	
 			}else{
 				echo "fail file upload";
