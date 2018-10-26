@@ -57,7 +57,9 @@ if($conn->query($sql) === TRUE){
 				$sql = "UPDATE products SET image=\"" . $file_name  . "\" WHERE pid=" . $pid;
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
-        generateThumbnail("img/products/" . $file_name, 200, 200, 65);
+        if(file_exists ($file_tmp,"img/products/" . $file_name)){
+          generateThumbnail("img/products/" . $file_name, 200, 200, 65);
+        }else{header("Location: index.php"); }
 				header("Location: admin.php");	
 			}else{
 				echo "fail file upload";
