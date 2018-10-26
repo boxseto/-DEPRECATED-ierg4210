@@ -1,23 +1,22 @@
 <?php
 //https://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image
-function make_thumb($src, $dest, $desired_width) {
-
-    /* read the source image */
-    $source_image = imagecreatefromjpeg($src);
-    $width = imagesx($source_image);
-    $height = imagesy($source_image);
-
-    /* find the "desired height" of this thumbnail, relative to the desired width  */
-    $desired_height = floor($height * ($desired_width / $width));
-
-    /* create a new, "virtual" image */
-    $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
-
-    /* copy source image at a resized size */
-    imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
-
-    /* create the physical thumbnail image to its destination */
-    imagejpeg($virtual_image, $dest);
+function generateThumbnail($img, $width, $height, $quality = 90)
+{
+    if (is_file($img)) {
+        $imagick = new Imagick(realpath($img));
+        $imagick->setImageFormat('jpeg');
+        $imagick->setImageCompression(Imagick::COMPRESSION_JPEG);
+        $imagick->setImageCompressionQuality($quality);
+        $imagick->thumbnailImage($width, $height, false, false);
+        $filename_no_ext = reset(explode('.', $img));
+        if (file_put_contents($filename_no_ext . '_thumb' . '.jpg', $imagick) === false) {
+            throw new Exception("Could not put contents.");
+        }
+        return true;
+    }
+    else {
+        throw new Exception("No valid image provided with {$img}.");
+    }
 }
 $new_cat = isset($_REQUEST["new_category"]) ? htmlspecialchars($_REQUEST["new_category"]): "0";
 $cat = isset($_REQUEST["category"]) ? htmlspecialchars($_REQUEST["category"]): "0";
@@ -56,7 +55,7 @@ if( $mode == "0" ){
 				$sql = "UPDATE products SET image=\"" . $file_name . "\" WHERE pid=" . $pid;
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
-        make_thumb("img/products/" . $file_name, "img/products/" . "thumb_" . $file_name, "200");
+        generateThumbnail("img/products/" . $file_name, 200, 200, 65);
 				header("Location: admin.php");	
 			}else{
 				echo "fail file upload";
