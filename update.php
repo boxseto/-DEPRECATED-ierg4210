@@ -1,23 +1,4 @@
 <?php
-//https://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image
-function generateThumbnail($img, $width, $height, $quality = 90)
-{
-    if (is_file($img)) {
-        $imagick = new Imagick(realpath($img));
-        $imagick->setImageFormat('jpeg');
-        $imagick->setImageCompression(Imagick::COMPRESSION_JPEG);
-        $imagick->setImageCompressionQuality($quality);
-        $imagick->thumbnailImage($width, $height, false, false);
-        $filename_no_ext = reset(explode('.', $img));
-        if (file_put_contents($filename_no_ext . '_thumb' . '.jpg', $imagick) === false) {
-            throw new Exception("Could not put contents.");
-        }
-        return true;
-    }
-    else {
-        throw new Exception("No valid image provided with {$img}.");
-    }
-}
 $pid = htmlspecialchars($_POST['pid']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 
@@ -57,9 +38,6 @@ if($conn->query($sql) === TRUE){
 				$sql = "UPDATE products SET image=\"" . $file_name  . "\" WHERE pid=" . $pid;
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
-        if(file_exists ($file_tmp,"img/products/" . $file_name)){
-          generateThumbnail("img/products/" . $file_name, 200, 200, 65);
-        }else{header("Location: index.php"); }
 				header("Location: admin.php");	
 			}else{
 				echo "fail file upload";

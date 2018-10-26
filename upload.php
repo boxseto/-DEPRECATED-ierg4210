@@ -1,25 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-//https://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image
-function generateThumbnail($img, $width, $height, $quality = 90)
-{
-    if (is_file($img)) {
-        $imagick = new Imagick(realpath($img));
-        $imagick->setImageFormat('jpeg');
-        $imagick->setImageCompression(Imagick::COMPRESSION_JPEG);
-        $imagick->setImageCompressionQuality($quality);
-        $imagick->thumbnailImage($width, $height, false, false);
-        $filename_no_ext = reset(explode('.', $img));
-        if (file_put_contents($filename_no_ext . '_thumb' . '.jpg', $imagick) === false) {
-            throw new Exception("Could not put contents.");
-        }
-        return true;
-    }
-    else {
-        throw new Exception("No valid image provided with {$img}.");
-    }
-}
 $new_cat = isset($_REQUEST["new_category"]) ? htmlspecialchars($_REQUEST["new_category"]): "0";
 $cat = isset($_REQUEST["category"]) ? htmlspecialchars($_REQUEST["category"]): "0";
 $name = isset($_REQUEST["name"]) ? htmlspecialchars($_REQUEST["name"]): "0";
@@ -57,8 +36,6 @@ if( $mode == "0" ){
 				$sql = "UPDATE products SET image=\"" . $file_name . "\" WHERE pid=" . $pid;
 				$conn->query($sql);
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
-        $tmp_file_name = "img/products/" . $file_name;
-          generateThumbnail($tmp_file_name, 200, 200, 65);
 				header("Location: admin.php");	
 			}else{
 				echo "fail file upload";
