@@ -1,10 +1,10 @@
 <?php
-$new_cat = isset($_REQUEST["new_category"]) ? htmlspecialchars($_REQUEST["new_category"]): "0";
-$cat = isset($_REQUEST["category"]) ? htmlspecialchars($_REQUEST["category"]): "0";
-$name = isset($_REQUEST["name"]) ? htmlspecialchars($_REQUEST["name"]): "0";
-$price = isset($_REQUEST["price"]) ? htmlspecialchars($_REQUEST["price"]): "0";
+$new_cat = isset($_REQUEST["new_category"]) && preg_match("^[\w\-]+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["new_category"]) : "0";
+$cat = isset($_REQUEST["category"]) && preg_match("^\d+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["category"]): "0";
+$name = isset($_REQUEST["name"]) && preg_match("^[\w\-]+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["name"]): "0";
+$price = isset($_REQUEST["price"]) && preg_match("^\d+\.?\d*$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["price"]): "0";
 $desc = isset($_REQUEST["description"]) ? htmlspecialchars($_REQUEST["description"]): "0";
-$mode = isset($_REQUEST["mode"]) ? htmlspecialchars($_REQUEST["mode"]): "0";
+$mode = isset($_REQUEST["mode"]) && preg_match("^\d$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["mode"]): "0";
 
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 if( $mode == "0" ){

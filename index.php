@@ -241,7 +241,7 @@
             <div class="col-7">
               <a href="product.html" class="item_title">Shoes</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
           
@@ -252,7 +252,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Two Shoe</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
@@ -262,7 +262,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Converse</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$700</p>
         </div>
@@ -272,7 +272,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Wore shoes</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$150</p>
         </div>
@@ -282,7 +282,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Good shoes</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
@@ -292,7 +292,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Buy it</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
@@ -302,7 +302,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Expensive two</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
@@ -312,7 +312,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Fantastic shoes</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
@@ -322,7 +322,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Is</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1</p>
         </div>
@@ -332,7 +332,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">This</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1.</p>
         </div>
@@ -342,7 +342,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">Loss</a>
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$11</p>
         </div>
@@ -352,7 +352,7 @@
             <div class="col-7">
               <a href="product.html"  class="item_title">?</a>   
             </div>
-            <a class="col-2 btn btn-primary" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1_</p>
         </div>
@@ -444,7 +444,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Add To Cart<i class="fas fa-plus"></i></button>
+        <button type="button" class="btn btn-primary addcart" data-dismiss="modal">Add To Cart<i class="fas fa-plus"></i></button>
       </div>
     </div>
   </div>
@@ -463,6 +463,7 @@
 
 <!--self-written js-->
 <script src="js/index_theme.js"></script>
+<script src="js/shopping_cart_index.js"></script>
 
 
 </body>

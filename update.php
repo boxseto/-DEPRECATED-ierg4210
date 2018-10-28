@@ -3,7 +3,10 @@ $pid = htmlspecialchars($_POST['pid']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 
 if( isset($_POST['change'])){
-	$sql = "UPDATE products SET catid=" . $_POST['catid'] . ", name=\"" . $_POST['name'] . "\", price=" . $_POST['price'] . ", description=\"" . trim($_POST['desc']) . "\" WHERE pid=" . $pid;
+	$sql = "UPDATE products SET catid=" . preg_match("^\d+$",htmlspecialchars($_POST['catid'])) ? htmlspecialchars($_POST['catid']): "0" . 
+          ", name=\"" . preg_match("^[\w\-]+$",htmlspecialchars($_POST['name'])) ? htmlspecialchars($_POST['name']): "0" . 
+            "\", price=" . preg_match("^\d+\.?\d*$",htmlspecialchars($_POST['price'])) ? htmlspecialchars($_POST['price']): "0" . 
+              ", description=\"" . trim($_POST['desc']) . "\" WHERE pid=" . $pid;
 } else if ( isset($_POST['delete'])){
 	$sql = "SELECT * FROM products WHERE pid=" . $pid;
 		$result = $conn->query($sql);
