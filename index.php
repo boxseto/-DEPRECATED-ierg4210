@@ -81,74 +81,9 @@
   <div class="expand_menu">
     <div id="content">
       <ul>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-      </ul>
+     </ul>
       <div class="row total">
-        <p>Total:$20</p>
+        <p>Total:$0</p>
         <a href="https://www.paypal.com" class="btn btn-success float-right">Checkout</a>
       </div>
     </div>
@@ -237,122 +172,122 @@
       <div class="col-12 owl-carousel">
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html" class="item_title">Shoes</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
           
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Two Shoe</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Converse</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$700</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Wore shoes</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$150</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Good shoes</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Buy it</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Expensive two</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Fantastic shoes</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$200</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Is</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">This</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1.</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">Loss</a>
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$11</p>
         </div>
         <div class="item">
           <a href="product.html"><img src="img/products/product1.jpg"></a>
-          <div class="row">
+          <div class="row" id="1">
             <div class="col-7">
               <a href="product.html"  class="item_title">?</a>   
             </div>
-            <a class="col-2 btn btn-primary addcart" href=""><i class="fas fa-plus"></i></a>
+            <a class="col-2 btn btn-primary add_cart" href=""><i class="fas fa-plus"></i></a>
           </div>
           <p class="item_price">$1_</p>
         </div>
@@ -442,9 +377,9 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="1">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary addcart" data-dismiss="modal">Add To Cart<i class="fas fa-plus"></i></button>
+        <button type="button" class="btn btn-primary add_cart" data-dismiss="modal">Add To Cart<i class="fas fa-plus"></i></button>
       </div>
     </div>
   </div>

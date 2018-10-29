@@ -82,74 +82,9 @@
   <div class="expand_menu">
     <div id="content">
       <ul>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <a href="product.html"><img src="img/products/product3.jpg"></a>
-            <a href="product.html" class="title">Item</a>
-            <div class="quantity">
-              <input class="qty" min="0" value="1" readonly>
-            </div>  
-            <div class="info">
-              <div class="price">$20</div>
-              <a href="#"> Delete </a>
-            </div>  
-          </div>
-        </li>
       </ul>
       <div class="row total">
-        <p>Total:$20</p>
+        <p>Total:$0</p>
         <a href="https://www.paypal.com" class="btn btn-success float-right">Checkout</a>
       </div>
     </div>
@@ -200,7 +135,7 @@
       </div>
       <div class="row">
         <div class="col-2 item-tag"></div>
-        <div class="col-10 item-action">
+        <div class="col-10 item-action" id="<?php echo $row["pid"];?>">
           <button class="btn btn-primary add_cart"><i class="fa fa-plus"></i> Add to cart</button>
         </div>  
       </div>
@@ -226,7 +161,7 @@
 
 <!--self-written js-->
 <script src="js/index_theme.js"></script>
-
+<script src="js/shopping_cart_index.js"></script>
 
 </body>
 </html>
