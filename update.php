@@ -5,30 +5,23 @@ if(!authchk()){header('location: index.php');}
 <?php
 
 $pid = htmlspecialchars($_POST['pid']);
+$catid = preg_match("^\d+$",htmlspecialchars($_POST['catid'])) ? htmlspecialchars($_POST['catid']): "0" ;
+$name = preg_match("^[\w\-]+$",htmlspecialchars($_POST['name'])) ? htmlspecialchars($_POST['name']): "0";
+$price =  preg_match("^\d+\.?\d*$",htmlspecialchars($_POST['price'])) ? htmlspecialchars($_POST['price']): "0";
+$desc = trim($_POST['desc']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 
 if( isset($_POST['change'])){
-	$sql = "UPDATE products SET catid=" . preg_match("^\d+$",htmlspecialchars($_POST['catid'])) ? htmlspecialchars($_POST['catid']): "0" . 
-          ", name=\"" . preg_match("^[\w\-]+$",htmlspecialchars($_POST['name'])) ? htmlspecialchars($_POST['name']): "0" . 
-            "\", price=" . preg_match("^\d+\.?\d*$",htmlspecialchars($_POST['price'])) ? htmlspecialchars($_POST['price']): "0" . 
-              ", description=\"" . trim($_POST['desc']) . "\" WHERE pid=" . $pid;
-} else if ( isset($_POST['delete'])){
-	$sql = "SELECT * FROM products WHERE pid=" . $pid;
-		$result = $conn->query($sql);
-		if($result->num_rows > 0){
-			$row = $result->fetch_assoc();
-			unlink('img/products/' . $row['image']);
-		}
-	$sql = "DELETE FROM products WHERE pid=" . $pid;
-} else if(isset($_POST['catdelete'])){
-	$sql = "DELETE FROM products WHERE catid=" . $_POST['catid'];
-}else{
-	echo "idk what are you doing";
-}
-if($conn->query($sql) === TRUE){
-	if(!empty($_FILES['image']['name']) && isset($_FILES['image']) && isset($_POST['change'])){
-		$sql = "UPDATE products SET image=\"" . $_FILES['image']['name'] . "\" WHERE pid=" . $pid;
-		if($conn->query($sql) === TRUE){
+	$q = "UPDATE products SET catid=?, name=?, price=?, description=? WHERE pid=?";
+  $sql = $conn->prepare($q);
+  $sql->bind_param('isssi', $catid, $name, $price, $desc, $pid);
+  $sql->execute();
+  if($sql->affected_rows != 0 && !empty($_FILES['image']['name']) && isset($_FILES['image'])){
+		$q2 = "UPDATE products SET image=? WHERE pid=?";
+    $sql2 = $conn->prepare($q2);
+    $sql2->bind_param('si', $_FILES['image']['name'], $pid);
+    $sql2->execute();
+		if($sql2->affected_rows != 0){
 			$errors = array(); 
 			$file_size = $_FILES['image']['size'];
 			$file_tmp = $_FILES['image']['tmp_name'];
@@ -43,8 +36,10 @@ if($conn->query($sql) === TRUE){
 				$errors[]="File larger than 2MB";
 			}
 			if(empty($errors)==true){
-				$sql = "UPDATE products SET image=\"" . $file_name  . "\" WHERE pid=" . $pid;
-				$conn->query($sql);
+        $q3 = "UPDATE products SET image=\"" . $file_name  . "\" WHERE pid=" . $pid;
+        $sql3 = $conn->prepare($q3);
+        $sql3->bind_param('si', $file_name, $pid);
+        $sql3->execute();
 				move_uploaded_file($file_tmp,"img/products/" . $file_name);
 				header("Location: admin.php");	
 			}else{
@@ -52,17 +47,35 @@ if($conn->query($sql) === TRUE){
 				//header("Location: admin_add.php");	
 			}
 		}
-	} else if(isset($_POST['delete'])){
-		
-	} else if(isset($_POST['catdelete'])){
-		$sql = "DELETE FROM categories WHERE catid=" . $_POST['catid'];
-		$conn->query($sql);
-
 	}
-	$conn->close();
+	header("Location: admin.php");
+} else if ( isset($_POST['delete'])){
+	$q = "SELECT * FROM products WHERE pid=?";
+  $sql = $conn->prepare($q);
+  $sql->bind_param('i', $pid);
+  $sql->execute();
+  $result = $sql->get_result();
+	if($result->num_rows > 0){
+		$row = $result->fetch_assoc();
+		unlink('img/products/' . $row['image']);
+	}
+	$q = "DELETE FROM products WHERE pid=" . $pid;
+  $sql = $conn->prepare($q);
+  $sql->bind_param('i', $pid);
+  $sql->execute();
+	header("Location: admin.php");
+} else if(isset($_POST['catdelete'])){
+	$q = "DELETE FROM products WHERE catid=" . $catid;
+  $sql = $conn->prepare($q);
+  $sql->bind_param('i', $catid);
+  $sql->execute();
+	$q = "DELETE FROM categories WHERE catid=" . $_POST['catid'];
+  $sql = $conn->prepare($q);
+  $sql->bind_param('i', $catid);
+  $sql->execute();
 	header("Location: admin.php");
 }else{
-	$conn->close();
+	echo "idk what are you doing";
 	header("location: admin_info.php");
 }
 
