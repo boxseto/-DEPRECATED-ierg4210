@@ -1,5 +1,8 @@
 <html>
-
+<?php
+require_once("authchk.php");
+if(!authchk()){header('location: index.php');}
+?>
 <head>
 
 	<meta charset="utf-8">

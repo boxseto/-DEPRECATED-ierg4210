@@ -1,4 +1,9 @@
 <?php
+require_once("authchk.php");
+if(!authchk()){header('location: index.php');}
+?>
+<?php
+
 $pid = htmlspecialchars($_POST['pid']);
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 

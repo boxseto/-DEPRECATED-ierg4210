@@ -43,12 +43,15 @@
 						?>
           </ul>
           <ul id="user_list">
-            <li>
-              <a href="login.html">
-                Sign in
-                <i class="fas fa-sign-in-alt"></i>
-              </a>
-            </li>
+            <?php
+              session_start();
+              if(isset($_SESSION['4210proj'])){
+						   echo "<li><a>" . $_SESSION['4210proj']['em'] . "<i class=\"fas fa-user\"></i></a></li>" . 
+                    "<li><a href=\"logout.php\">Sign out<i class=\"fas fa-sign-out-alt\"></i></a></li>";
+							}else{
+               echo "<li><a href=\"login.html\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
+              }
+            ?>
             <li>
               <a id="cart" href="#">
                 Shopping cart

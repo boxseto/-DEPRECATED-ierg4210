@@ -50,6 +50,14 @@ function initialcart(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				var cart = document.querySelector(".expand_menu #content ul");
 				cart.innerHTML = this.responseText;
+				var quantin = document.querySelectorAll("#content li input");
+				for(var i = 0 ; i < quantin.length ; i++){
+					quantin[i].addEventListener("change", updatequan);
+				}
+				var delitems = document.querySelectorAll("#content li .info a");
+				for(var i = 0 ; i < delitems.length ; i++){
+					delitems[i].addEventListener("click", delitem);
+				}
 				updatesum();
 			}
 		}

@@ -1,3 +1,7 @@
+<?php
+require_once("authchk.php");
+if(!authchk()){header('location: index.php');}
+?>
 <!Doctype html>
 <html>
 
