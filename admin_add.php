@@ -2,6 +2,14 @@
 <?php
 require_once("authchk.php");
 if(!authchk()){header('location: index.php');}
+function csrf_getNonce($action){
+	$nonce = mt_rand() . mt_rand();
+	if(!isset($_SESSION['csrf_nonce']))
+		$SESSION['csrf_nonce'] = array();
+	$_SESSION['csrf_nonce'][$action] = $nonce;
+	return $nonce;
+}
+
 ?>
 <head>
 
@@ -48,6 +56,7 @@ if(!authchk()){header('location: index.php');}
         </div>
         <div class="card-body">
           <form method="POST" action="upload.php">
+	    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce('add_cat');?>"/>
             <input type="hidden" name="mode" value="0"/> 
             Add a Category: <input type="text" name="new_category" required="required" pattern="^[\w\-]+$"/><br><br>
             <input type="submit" class="btn btn-secondary" value="Add">
@@ -62,6 +71,7 @@ if(!authchk()){header('location: index.php');}
         </div>
         <div class="card-body">
           <form method="POST" action="upload.php" enctype="multipart/form-data">
+	    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce('add_product');?>"/>
             <input type="hidden" name="mode" value="1"/> 
             Choose a Category: 
             <select name="category">

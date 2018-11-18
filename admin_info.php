@@ -2,6 +2,14 @@
 <?php
 require_once("authchk.php");
 if(!authchk()){header('location: index.php');}
+function csrf_getNonce($action){
+	$nonce = mt_rand() . mt_rand();
+	if(!isset($_SESSION['csrf_nonce']))
+		$SESSION['csrf_nonce'] = array();
+	$_SESSION['csrf_nonce'][$action] = $nonce;
+	return $nonce;
+}
+
 ?>
 <html>
 
@@ -63,6 +71,7 @@ if(!authchk()){header('location: index.php');}
         </div>
         <div class="card-body">
           <form action="update.php" method="post" enctype="multipart/form-data">
+             <input type="hidden" name="nonce" value="<?php echo csrf_getNonce('update_product');?>"/>
 						<input type="hidden" value="<?php echo $pid; ?>" name="pid"/>
             Choose a Category: 
             <select name="catid"> 

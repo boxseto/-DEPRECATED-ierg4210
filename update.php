@@ -3,6 +3,16 @@ require_once("authchk.php");
 if(!authchk()){header('location: index.php');}
 ?>
 <?php
+function csrf_verifynonce($action, $nonce){
+	if(isset($nonce) && $_SESSION['csrf_nonce'][$action] == $nonce){
+		if($_SESSION['4210proj'] == null)
+			unset($_SESSION['csrf_nonce'][$action]);
+		return true;
+	}
+	return false;
+}
+$nonce = htmlspecialchars($_REQUEST["nonce"]);
+if(!csrf_verifynonce('update_product',$nonce)){header('location: login.php');}
 
 $pid = htmlspecialchars($_POST['pid']);
 $catid = preg_match("^\d+$",htmlspecialchars($_POST['catid'])) ? htmlspecialchars($_POST['catid']): "0" ;

@@ -3,6 +3,16 @@ require_once("authchk.php");
 if(!authchk()){header('location: index.php');}
 ?>
 <?php
+function csrf_verifynonce($action, $nonce){
+	if(isset($nonce) && $_SESSION['csrf_nonce'][$action] == $nonce){
+		if($_SESSION['4210proj'] == null)
+			unset($_SESSION['csrf_nonce'][$action]);
+		return true;
+	}
+	return false;
+}
+
+$nonce = htmlspecialchars($_REQUEST["nonce"]);
 $new_cat = isset($_REQUEST["new_category"]) && preg_match("^[\w\-]+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["new_category"]) : "0";
 $cat = isset($_REQUEST["category"]) && preg_match("^\d+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["category"]): "0";
 $name = isset($_REQUEST["name"]) && preg_match("^[\w\-]+$",htmlspecialchars($_REQUEST["new_category"])) ? htmlspecialchars($_REQUEST["name"]): "0";
@@ -12,6 +22,7 @@ $mode = isset($_REQUEST["mode"]) && preg_match("^\d$",htmlspecialchars($_REQUEST
 
 $conn = new mysqli("localhost", "root", "toor", "IERG4210");
 if( $mode == "0" ){
+	if(!csrf_verifynonce('add_cat',$nonce)){header('location: login.php');}
 	$q = "INSERT INTO categories (name) VALUES ( ? )";
 	$sql = $conn->prepare($q);
 	$sql->bind_param('s', $new_cart);
@@ -22,6 +33,7 @@ if( $mode == "0" ){
 		header("Location: admin.php");
 	}
 }else if($mode == "1"){
+	if(!csrf_verifynonce('add_product',$nonce)){header('location: login.php');}
 	$q = "INSERT INTO products (catid, name, price, description, image) VALUES (?,?,?,?,?)";
 	$sql = $conn->prepare($q);
 	$sql->bind_param('issss',$cat, $name, $price, $desc, $_FILES['image']['name']);
