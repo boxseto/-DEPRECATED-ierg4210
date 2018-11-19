@@ -56,15 +56,15 @@ if(!authchk()){header('location: index.php');}
 						if($result->num_rows > 0){
 							while($row = $result->fetch_assoc()){
 								echo "<tr class=\"row\">\n<td class=\"col-1\">\n
-              <img src=\"img/products/" . $row["image"] . "\">\n
+              <img src=\"img/products/" . htmlspecialchars($row["image"]) . "\">\n
             </td>\n<td class=\"col-10\">\n<div class=\"media-body\">\n
-									<h4 class=\"title\">\n" . $row["name"] . "\n</h4>\n
-									<p class=\"summary\">" . $row["description"] . "</p>\n
+									<h4 class=\"title\">\n" . htmlspecialchars($row["name"]) . "\n</h4>\n
+									<p class=\"summary\">" . htmlspecialchars($row["description"]) . "</p>\n
 								</div>\n
             </td>\n
 						<td class=\"col-1\">\n
              <form method=\"post\" action=\"admin_info.php\">\n
-							 <input type=\"hidden\" name=\"pid\" value=\"" . $row["pid"] . "\" ></input>\n
+							 <input type=\"hidden\" name=\"pid\" value=\"" . htmlspecialchars($row["pid"]) . "\" ></input>\n
 							 <input type=\"submit\" class=\"btn btn-secondary\" value=\"More\" ></input>\n</form>
             </td>
 					</tr>";

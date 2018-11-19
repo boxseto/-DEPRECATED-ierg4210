@@ -46,7 +46,7 @@
           </ul>
           <ul id="user_list">
             <li>
-              <a href="login.html">
+              <a href="login.php">
                 Sign in
                 <i class="fas fa-sign-in-alt"></i>
               </a>
@@ -78,7 +78,7 @@
   <div class="row cat_title">
     <ul class="breadcrumb">
       <li><a href="index.html">Home</a></li>
-      <li><a href="login.html">Login</a></li>
+      <li><a href="login.php">Login</a></li>
       <li><a>Change Password</a></li>
     </ul>
   </div>

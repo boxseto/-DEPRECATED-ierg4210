@@ -36,7 +36,7 @@
 							$result = $conn->query($sql);
 							if($result->num_rows > 0){
 								while($row = $result->fetch_assoc()){
-									echo "<li><a href=\"category.php?cat=" . $row["catid"] . "\">" . $row["name"] . "</a></li>";
+									echo "<li><a href=\"category.php?cat=" . htmlspecialchars($row["catid"]) . "\">" . htmlspecialchars($row["name"]) . "</a></li>";
 								}
 							}
 							$conn->close();
@@ -49,7 +49,7 @@
 						   echo "<li><a>" . $_SESSION['4210proj']['em'] . "<i class=\"fas fa-user\"></i></a></li>" . 
                     "<li><a href=\"logout.php\">Sign out<i class=\"fas fa-sign-out-alt\"></i></a></li>";
 							}else{
-               echo "<li><a href=\"login.html\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
+               echo "<li><a href=\"login.php\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
               }
             ?>
             <li>
@@ -109,7 +109,7 @@
         $result = $conn->query($sql);
 				if($result->num_rows > 0){
 					while($row = $result->fetch_assoc()){
-						echo "<li><a href=\"category.php?cat=" . $row["catid"]  . "\">" . $row["name"] . "</a></li>";
+						echo "<li><a href=\"category.php?cat=" . htmlspecialchars($row["catid"])  . "\">" . htmlspecialchars($row["name"]) . "</a></li>";
 					}
 				}
 				$conn->close();	

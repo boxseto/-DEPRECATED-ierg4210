@@ -62,7 +62,7 @@ if($result->num_rows > 0){
 }else{
 	$sql->close();
 	$conn->close();
-	header('Location: login.html');
+	header('Location: login.php');
 }
 $conn->close();
 ?>

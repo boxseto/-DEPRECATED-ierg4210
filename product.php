@@ -36,7 +36,7 @@
 							$result = $conn->query($sql);
 							if($result->num_rows > 0){
 								while($row = $result->fetch_assoc()){
-									echo "<li><a href=\"category.php?cat=" . $row["catid"] . "\">" . $row["name"] . "</a></li>";
+									echo "<li><a href=\"category.php?cat=" . htmlspecialchars($row["catid"]) . "\">" . htmlspecialchars($row["name"]) . "</a></li>";
 								}
 							}
 							$conn->close();
@@ -49,7 +49,7 @@
 						   echo "<li><a>" . $_SESSION['4210proj']['em'] . "<i class=\"fas fa-user\"></i></a></li>" . 
                     "<li><a href=\"logout.php\">Sign out<i class=\"fas fa-sign-out-alt\"></i></a></li>";
 							}else{
-               echo "<li><a href=\"login.html\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
+               echo "<li><a href=\"login.php\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
               }
             ?>
             <li>
@@ -111,24 +111,24 @@
   <div class="row cat_title">
     <ul class="breadcrumb">
       <li><a href="index.php">Home</a></li>
-      <li><a href="category.php?cat=<?php echo $bread['catid'];?>"><?php echo $bread['name'];?></a></li>
-      <li><a><?php echo $row['name'];?></a></li>
+      <li><a href="category.php?cat=<?php echo htmlspecialchars($bread['catid']);?>"><?php echo htmlspecialchars($bread['name']);?></a></li>
+      <li><a><?php echo htmlspecialchars($row['name']);?></a></li>
     </ul>
   </div>
   <div class="row item">
     <div class="col-4 img-zoom">
-      <img id="myimage" src="<?php echo "img/products/".$row['image']; ?>">
+      <img id="myimage" src="<?php echo "img/products/".htmlspecialchars($row['image']); ?>">
       <div id="myresult" class="img-zoom-result"></div>
     </div>
     <div class="col-8 item-details">
-      <div class="row item-title"><?php echo $row['name']; ?></div>
+      <div class="row item-title"><?php echo htmlspecialchars($row['name']); ?></div>
       <div class="row">
         <div class="col-2 item-tag">Price: </div>
-        <div class="col-10 item-price">$<?php echo $row['price']; ?></div>
+        <div class="col-10 item-price">$<?php echo htmlspecialchars($row['price']); ?></div>
       </div>
       <div class="row">
         <div class="col-2 item-tag">Description: </div>
-        <div class="col-10 item-description"><?php echo $row['description']; ?></div>
+        <div class="col-10 item-description"><?php echo htmlspecialchars($row['description']); ?></div>
       </div>
       <div class="row">
         <div class="col-2 item-tag">Quantity: </div>
@@ -138,7 +138,7 @@
       </div>
       <div class="row">
         <div class="col-2 item-tag"></div>
-        <div class="col-10 item-action" id="<?php echo $row["pid"];?>">
+        <div class="col-10 item-action" id="<?php echo htmlspecialchars($row["pid"]);?>">
           <button class="btn btn-primary add_cart"><i class="fa fa-plus"></i> Add to cart</button>
         </div>  
       </div>

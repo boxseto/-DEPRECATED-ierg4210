@@ -36,7 +36,7 @@
 							$result = $conn->query($sql);
 							if($result->num_rows > 0){
 								while($row = $result->fetch_assoc()){
-									echo "<li><a href=\"category.php?cat=" . $row["catid"] ."\">" . $row["name"] . "</a></li>";
+									echo "<li><a href=\"category.php?cat=" . htmlspecialchars($row["catid"]) ."\">" . htmlspecialchars($row["name"]) . "</a></li>";
 								}
 							}
 							$conn->close();
@@ -49,7 +49,7 @@
 						   echo "<li><a>" . $_SESSION['4210proj']['em'] . "<i class=\"fas fa-user\"></i></a></li>" . 
                     "<li><a href=\"logout.php\">Sign out<i class=\"fas fa-sign-out-alt\"></i></a></li>";
 							}else{
-               echo "<li><a href=\"login.html\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
+               echo "<li><a href=\"login.php\">Sign in<i class=\"fas fa-sign-in-alt\"></i></a></li>"; 
               }
             ?>
             <li>
@@ -103,7 +103,7 @@
 ?>	
     <ul class="breadcrumb">
       <li><a href="index.php">Home</a></li>
-      <li><a><?php echo $row['name'];?></a></li>
+      <li><a><?php echo htmlspecialchars($row['name']);?></a></li>
     </ul>
   </div>
   <div class="row">
@@ -113,11 +113,11 @@
 			$result = $conn->query($sql);
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()){
-					echo"      <li id=\"" . $row["pid"] . "\">";
-					echo"        <a href=\"product.php?pid=" . $row["pid"] . "\"><img src=\"img/products/" . $row["image"] . "\"></a>";
-					echo"        <div class=\"title\" ><a href=\"product.php?pid=" . $row["pid"] . "\">" . $row['name'] . "</a></div>";
-					echo"        <p class=\"price\">$" . $row["price"] . "</p>";
-					echo"        <a href=\"product.php?pid=" . $row["pid"] . "\" class=\"btn btn-success details\"><i class=\"fas fa-search\"></i> Details</a>";
+					echo"      <li id=\"" . htmlspecialchars($row["pid"]) . "\">";
+					echo"        <a href=\"product.php?pid=" . htmlspecialchars($row["pid"]) . "\"><img src=\"img/products/" . htmlspecialchars($row["image"]) . "\"></a>";
+					echo"        <div class=\"title\" ><a href=\"product.php?pid=" . htmlspecialchars($row["pid"]) . "\">" . htmlspecialchars($row['name']) . "</a></div>";
+					echo"        <p class=\"price\">$" . htmlspecialchars($row["price"]) . "</p>";
+					echo"        <a href=\"product.php?pid=" . htmlspecialchars($row["pid"]) . "\" class=\"btn btn-success details\"><i class=\"fas fa-search\"></i> Details</a>";
 					echo"        <button class=\"btn btn-primary add_cart\"><i class=\"fas fa-plus\"></i> Add to cart</button>";
 					echo"      </li>";
  

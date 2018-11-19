@@ -10,11 +10,11 @@
 		$result = $conn->query($sql);
 		if($result->num_rows > 0){
 			$row = $result->fetch_assoc();
-			$final .= '<li><div class="row">' . 
-					'  <a href="product.php?pid='. $row["pid"] .'"> <img src="img/products/'. $row["image"] .'">  </a>' .
-					'  <a href="product.php" class="title">'. $row["name"] .'</a>' .
+			$final .= '<li><div class="row">' .
+					'  <a href="product.php?pid='. htmlspecialchars($row["pid"]) .'"> <img src="img/products/'. htmlspecialchars($row["image"]) .'">  </a>' .
+					'  <a href="product.php" class="title">'. htmlspecialchars($row["name"]) .'</a>' .
         				'  <div class="quantity"> <input class="qty" min="0" value="1" > </div>' .
-        				'  <div class="info"> <div class="price">$'. $row["price"] .'</div> <a href="#"> Delete </a> </div>' .
+        				'  <div class="info"> <div class="price">$'. htmlspecialchars($row["price"]) .'</div> <a href="#"> Delete </a> </div>' .
         				'</div></li>';
 
 		}

@@ -81,7 +81,7 @@ function csrf_getNonce($action){
                 $result = $conn->query($sql);
                 if($result->num_rows > 0){
                   while($row = $result->fetch_assoc()){
-                    echo "<option value=\"" . $row["catid"] . "\">" . $row["name"] . "</option>";
+                    echo "<option value=\"" . $htmlspecialchars(row["catid"]) . "\">" . htmlspecialchars($row["name"]) . "</option>";
                   }
                 }
                 $conn->close();

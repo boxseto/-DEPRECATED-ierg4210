@@ -46,7 +46,7 @@
           </ul>
           <ul id="user_list">
             <li>
-              <a href="login.html">
+              <a href="login.php">
                 Sign in
                 <i class="fas fa-sign-in-alt"></i>
               </a>

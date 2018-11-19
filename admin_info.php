@@ -67,12 +67,12 @@ function csrf_getNonce($action){
 ?>
      <div class="card">
         <div class="card-header">
-          Change products info - product <?php echo $pid; ?>
+          Change products info - product <?php echo htmlspecialchars($pid); ?>
         </div>
         <div class="card-body">
           <form action="update.php" method="post" enctype="multipart/form-data">
              <input type="hidden" name="nonce" value="<?php echo csrf_getNonce('update_product');?>"/>
-						<input type="hidden" value="<?php echo $pid; ?>" name="pid"/>
+						<input type="hidden" value="<?php echo htmlspecialchars($pid); ?>" name="pid"/>
             Choose a Category: 
             <select name="catid"> 
              <?php 
@@ -80,9 +80,9 @@ function csrf_getNonce($action){
                 $result = $conn->query($sql);
                 if($result->num_rows > 0){
                   while($row = $result->fetch_assoc()){
-                    echo "<option value=\"" . $row["catid"] . "\" ";
+                    echo "<option value=\"" . htmlspecialchars($row["catid"]) . "\" ";
 										if($row["catid"] == $catid){echo "selected";}
-										echo ">" . $row["name"] . "</option>";
+										echo ">" . htmlspecialchars($row["name"]) . "</option>";
                   }
                 }
 								$sql = "SELECT * FROM products WHERE pid=$pid";
@@ -97,10 +97,10 @@ function csrf_getNonce($action){
            </select>
 						<input type="submit" class="btn btn-warning" name="catdelete" value="Delete this cateory and all its products"/>
             <br><br>
-            Change Name: <input type="text" name="name" required="required" value="<?php echo $row["name"];?>"/><br><br>
-            Change Price: $<input type="number" min="0" name="price" value="<?php echo $row["price"];?>"/><br><br>
-            Change Description: <br><textarea name="desc" cols="50" rows="10"><?php echo $row["description"];?></textarea><br><br>
-            Change image (Current is <?php echo $row["image"];?>): <input type="file" name="image"/><br><br>
+            Change Name: <input type="text" name="name" required="required" value="<?php echo htmlspecialchars($row["name"]);?>"/><br><br>
+            Change Price: $<input type="number" min="0" name="price" value="<?php echo htmlspecialchars($row["price"]);?>"/><br><br>
+            Change Description: <br><textarea name="desc" cols="50" rows="10"><?php echo htmlspecialchars($row["description"]);?></textarea><br><br>
+            Change image (Current is <?php echo htmlspecialchars($row["image"]);?>): <input type="file" name="image"/><br><br>
             <input type="submit" class="btn btn-secondary" name="change" value="Change"/>
             <input type="submit" class="btn btn-warning" name="delete" value="Delete"/>
           </form>
