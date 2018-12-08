@@ -33,13 +33,13 @@ if(!authchk()){header('location: index.php');}
     <h3>Table</h3>
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-table"></i> Table</a>
+        <a class="nav-link" href="admin.php"><i class="fas fa-table"></i> Table</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="admin_add.php"><i class="fas fa-plus-circle"></i> Add</a>
       </li>
 	<li class="nav-item">
-        <a class="nav-link" href="admin_trans.php"><i class="fas fa-exchange-alt"></i> Orders</a>
+        <a class="nav-link" href="#"><i class="fas fa-exchange-alt"></i> Orders</a>
       </li>
 	<li class="nav-item">
         <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -54,26 +54,23 @@ if(!authchk()){header('location: index.php');}
 				<a class="btn btn-success btn-filter" href="admin_add.php">Add</a>
 			</div>
 			<table class="table table-filter">
+				<thead>
+					<tr class="row">
+						<th class="col-1">oid</th>
+						<th class="col-2">user</th>
+						<th class="col-5">digest</th>
+						<th class="col-2">salt</th>
+						<th class="col-2">tid</th>
+					</tr>
+				</thead>
 				<tbody>
 					<?php
 						$conn = new mysqli("localhost", "root", "toor", "IERG4210");
-						$sql = "SELECT * FROM products ORDER BY catid, pid ASC";
+						$sql = "SELECT * FROM orders ORDER BY oid ASC";
 						$result = $conn->query($sql);
 						if($result->num_rows > 0){
 							while($row = $result->fetch_assoc()){
-								echo "<tr class=\"row\">\n<td class=\"col-1\">\n
-              <img src=\"img/products/" . htmlspecialchars($row["image"]) . "\">\n
-            </td>\n<td class=\"col-10\">\n<div class=\"media-body\">\n
-									<h4 class=\"title\">\n" . htmlspecialchars($row["name"]) . "\n</h4>\n
-									<p class=\"summary\">" . htmlspecialchars($row["description"]) . "</p>\n
-								</div>\n
-            </td>\n
-						<td class=\"col-1\">\n
-             <form method=\"post\" action=\"admin_info.php\">\n
-							 <input type=\"hidden\" name=\"pid\" value=\"" . htmlspecialchars($row["pid"]) . "\" ></input>\n
-							 <input type=\"submit\" class=\"btn btn-secondary\" value=\"More\" ></input>\n</form>
-            </td>
-					</tr>";
+								echo "<tr class=\"row\"><td class=\"col-1\"> <p class=\"id\">".htmlspecialchars($row["oid"]) ."</p></td><td class=\"col-2\"> <p class=\"user\">".htmlspecialchars($row["user"]) ."</p></td><td class=\"col-5\"> <p class=\"digest\">".htmlspecialchars($row["digest"]) ."</p></td><td class=\"col-2\"> <p class=\"salt\">".htmlspecialchars($row["salt"]) ."</p></td><td class=\"col-2\"> <p class=\"tid\">".htmlspecialchars($row["tid"]) ."</p></td></tr>";
 							}
 						}
 					?>

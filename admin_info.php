@@ -47,6 +47,12 @@ function csrf_getNonce($action){
         <li class="nav-item">
           <a class="nav-link" href="admin_add.php"><i class="fas fa-plus-circle"></i> Add</a>
         </li>
+	<li class="nav-item">
+        <a class="nav-link" href="admin_trans.php"><i class="fas fa-exchange-alt"></i> Orders</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </li>
       </ul>
     </div>
 

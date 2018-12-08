@@ -101,6 +101,52 @@ function delitem(e){
 	updatesum();
 }
 
+function mysubmit(form){
+	var my_cart_info = JSON.parse(localStorage.getItem("cart"));
+	var xhr = (window.XMLHttpRequest)
+		? new XMLHttpRequest()
+		: new ActiveXObject("Microsoft.XMLHttp"),
+		async=true;
+	xhr.open('POST','checkout-process.php?action=genDigest',async);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.onreadystatechange = function(){
+//console.log('finished ajax with reasystate and status and responsetext:  ' + xhr.readyState +"   "+ xhr.status +"   "+  xhr.responseText);
+		if(xhr.readyState == 4 && xhr.status == 200){
+			//console.log(xhr.responseText);
+			json = JSON.parse(xhr.responseText);
+			form.custom.value = json[0]["digest"];
+			form.invoice.value = json[0]["invoice"];
+			for(var k in my_cart_info['cart']){
+				
+				var cart_item_paypal_name = document.createElement("input");
+				cart_item_paypal_name.type = "hidden";
+				cart_item_paypal_name.name = "item_name_"+(parseInt(k)+1);
+				cart_item_paypal_name.value = json["name"][k];
+
+				var cart_item_paypal_quan = document.createElement("input");
+				cart_item_paypal_quan.type = "hidden";
+				cart_item_paypal_quan.name = "quantity_"+(parseInt(k)+1);
+				cart_item_paypal_quan.value = my_cart_info['cart'][k]["quantity"].toString();
+
+				var cart_item_paypal_amount = document.createElement("input");
+				cart_item_paypal_amount.type = "hidden";
+				cart_item_paypal_amount.name = "amount_"+(parseInt(k)+1);
+				cart_item_paypal_amount.value = json["price"][k];
+
+				form.appendChild(cart_item_paypal_name);
+				form.appendChild(cart_item_paypal_quan);
+				form.appendChild(cart_item_paypal_amount);
+
+			}
+			//console.log(form);
+			localStorage.clear();
+			form.submit();
+		}
+	};
+	xhr.send('cart='+JSON.stringify(my_cart_info));
+	return false;
+}
+
 initialcart();
 var add_btns = document.querySelectorAll(".add_cart");
 for(var i = 0 ; i < add_btns.length ; i++){
@@ -118,38 +164,4 @@ document.onreadystatechange = function(){
 		}
 	}
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
