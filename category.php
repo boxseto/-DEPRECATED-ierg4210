@@ -106,9 +106,14 @@
 <?php
 	$catid = isset($_REQUEST["cat"]) ? htmlspecialchars($_GET["cat"]) : 1 ;
 	$conn = new mysqli("localhost","root", "toor", "IERG4210");
-	$sql = "SELECT * from categories WHERE catid=". $catid;
-	$result=$conn->query($sql);
-	$row = $result->fetch_assoc();
+	$sql = "SELECT * from categories WHERE catid=?";
+	$query = $conn->prepare($sql);
+	$query->bind_param('i',$catid);
+	$query->execute();
+	$result=$query->get_result();
+	if($result->num_rows > 0){
+		$row = $result->fetch_assoc();
+	}
 ?>	
     <ul class="breadcrumb">
       <li><a href="index.php">Home</a></li>
@@ -118,8 +123,11 @@
   <div class="row">
     <ul class="product_list">
 		<?php
-			$sql = "SELECT * FROM products WHERE catid=" . $catid;
-			$result = $conn->query($sql);
+			$sql = "SELECT * FROM products WHERE catid=?";
+			$query = $conn->prepare($sql);
+			$query->bind_param('i', $catid);
+			$query->execute();
+			$result = $query->get_result();
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()){
 					echo"      <li id=\"" . htmlspecialchars($row["pid"]) . "\">";

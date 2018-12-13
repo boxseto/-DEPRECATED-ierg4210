@@ -1,5 +1,5 @@
 <!Doctype html>
-<$php
+<?php
 if(isset($_GET['st'])){
 	if($_GET['st'] = 'Completed'){
 		$conn = new mysqli("localhost","root","toor","IERG4210");
