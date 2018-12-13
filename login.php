@@ -87,8 +87,8 @@
       <form method="POST" action="checkpw.php">
 	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('usr_login');?>"/>
         <input type="hidden" name="mode" value="0"/>
-        <input type="text" name="username" class="form-control" placeholder="Username" required/>
-        <input type="password" name="password" class="form-control" placeholder="Password" required/>
+        <input type="text" name="username" class="form-control" placeholder="Username: user(demo)" required/>
+        <input type="password" name="password" class="form-control" placeholder="Password: user(demo)" required/>
         <input type="submit" class="btnSubmit" value="Login" />
       </form>
     </div>
@@ -97,8 +97,8 @@
       <form method="POST" action="checkpw.php">
 	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('admin_login');?>"/>
         <input type="hidden" name="mode" value="1">
-        <input type="text" name="username" class="form-control" placeholder="Adminname" required/>
-        <input type="password" name="password" class="form-control" placeholder="Password" required/>
+        <input type="text" name="username" class="form-control" placeholder="Adminname: admin(demo)" required/>
+        <input type="password" name="password" class="form-control" placeholder="Password: admin(demo)" required/>
         <input type="submit" class="btnSubmit" value="Login" />
       </form>
     </div>
