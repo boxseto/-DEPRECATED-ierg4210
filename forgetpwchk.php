@@ -11,12 +11,9 @@ function csrf_verifynonce($action, $nonce){
 
 
 $user = htmlspecialchars($_REQUEST["username"]);
-$pass = htmlspecialchars($_REQUEST["old_password"]);
-$newpass = htmlspecialchars($_REQUEST["new_password"]);
-$renewpass = htmlspecialchars($_REQUEST["re_new_password"]);
+$email = htmlspecialchars($_REQUEST["email"]);
 $nonce = htmlspecialchars($_REQUEST["nonce"]);
-if(!csrf_verifynonce('change_pw',$nonce)){header('location: login.php');}
-if($newpass != $renewpass){header("location: logout.php");}
+if(!csrf_verifynonce('forget_pw',$nonce)){header('location: login.php');}
 
 $conn = new mysqli("localhost","root","toor", "IERG4210");
 
@@ -32,26 +29,29 @@ $result = $sql->get_result();
 if($result->num_rows > 0){
 	$row = $result->fetch_assoc();
 	$salt= $row['salt'];
-	$password = hash_hmac('sha256', $pass, $salt);
-	$q2 = "SELECT user FROM accounts WHERE user=? and password=?";
+	$q2 = "SELECT user FROM accounts WHERE user=? and email=?";
 	$sql2 = $conn->prepare($q2);
-	$sql2->bind_param('ss',$user, $password);
+	$sql2->bind_param('ss',$user, $email);
 	$sql2->execute();
 	$result2 = $sql2->get_result();
 	if($result2->num_rows > 0){
-    $newpassword = hash_hmac('sha256', $newpass, $salt);
-    $q3 = "UPDATE accounts SET password=? WHERE user=? and password=?";
-    $sql3 = $conn->prepare($q3);
-    $sql3->bind_param('sss', $newpassword, $user, $password);
-    $sql3->execute();
-    header("location: logout.php");
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+			$digest = hash('sha256', mt_rand().mt_rand());
+			$message = 'We receieved a notification from you to change account password, if this is not you, please ignore the email.\r\n If you would like to change password, please click the link below:\r\n secure.s53.ierg4210.ie.cuhk.edu.hk/resetpw.php?data=' . $digest;
+			$q3 = "UPDATE accounts SET reset=? WHERE user=?";
+			$sql3 = $conn->prepare($q3);
+			$sql3->bind_param('ss', $digest, $user);
+			$sql3->execute();
+			mail($email, 'PASSWORD RESET', $message);	
+		}
+		header("location: logout.php");
 	}else{
-    header("location: logout.php");
-  }
+		header("location: logout.php");
+	}
 }else{
 	$sql->close();
 	$conn->close();
-  header("location: logout.php");
+	header("location: logout.php");
 }
 $conn->close();
 ?>

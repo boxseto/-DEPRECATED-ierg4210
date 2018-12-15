@@ -1,4 +1,5 @@
 <!Doctype html>
+<html>
 <?php
 	function csrf_getNonce($action){
 		$nonce = mt_rand() . mt_rand();
@@ -8,7 +9,6 @@
 		return $nonce;
 	}
 ?>
-<html>
 
 <head>
 
@@ -78,36 +78,20 @@
   <div class="row cat_title">
     <ul class="breadcrumb">
       <li><a href="index.html">Home</a></li>
-      <li><a>Login</a></li>
+      <li><a href="login.php">Login</a></li>
+      <li><a>Reset Password</a></li>
     </ul>
   </div>
   <div class="row">
-    <div class="col-md-6 login-form-1">
-      <h3>User Login</h3>
-      <form method="POST" action="checkpw.php">
-	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('usr_login');?>"/>
-        <input type="hidden" name="mode" value="0"/>
-        <input type="text" name="username" class="form-control" placeholder="Username: user(demo)" required/>
-        <input type="password" name="password" class="form-control" placeholder="Password: user(demo)" required/>
-        <input type="submit" class="btnSubmit" value="Login" />
+    <div class="col-md-12 login-form-1">
+      <h3>Change Password</h3>
+      <form method="POST" action="forgetpwchk.php">
+	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('forget_pw');?>"/>
+        <input type="text" name="username" class="form-control" placeholder="Username" required/>
+        <input type="email" name="email" class="form-control" placeholder="email to recover" required/>
+        <input type="submit" class="btnSubmit" value="Change" />
       </form>
     </div>
-    <div class="col-md-6 login-form-2">
-      <h3>Admin Login</h3>
-      <form method="POST" action="checkpw.php">
-	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('admin_login');?>"/>
-        <input type="hidden" name="mode" value="1">
-        <input type="text" name="username" class="form-control" placeholder="Adminname: admin(demo)" required/>
-        <input type="password" name="password" class="form-control" placeholder="Password: admin(demo)" required/>
-        <input type="submit" class="btnSubmit" value="Login" />
-      </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 changepw"><a href="changepw.php">Change Password</a></h5></div>
-  </div>
-  <div class="row">
-    <div class="col-12 forgetpw"><a href="forgetpw.php">Reset Password</a></h5></div>
   </div>
 </div>
 

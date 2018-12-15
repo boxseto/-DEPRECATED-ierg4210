@@ -85,7 +85,7 @@
   <div class="row">
     <div class="col-md-12 login-form-1">
       <h3>Change Password</h3>
-      <form method="POST" action="changepw.php">
+      <form method="POST" action="changepwchk.php">
 	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('change_pw');?>"/>
         <input type="text" name="username" class="form-control" placeholder="Username" required/>
         <input type="password" name="old_password" class="form-control" placeholder="Old password" required/>
