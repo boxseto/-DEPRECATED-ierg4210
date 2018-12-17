@@ -38,18 +38,18 @@
     <ul class="breadcrumb">
       <li><a href="index.html">Home</a></li>
       <li><a href="login.php">Login</a></li>
-      <li><a>Change Password</a></li>
+      <li><a>Reset Password</a></li>
     </ul>
   </div>
   <div class="row">
     <div class="col-md-12 login-form-1">
-      <h3>Change Password</h3>
+      <h3>Reset Password</h3>
       <form method="POST" action="resetpwchk.php">
 	<input type="hidden" name="nonce" value="<?php echo csrf_getNonce('reset_pw');?>"/>
 	<input type="hidden" name="reset" value="<?php echo htmlspecialchars($_GET['data']);?>"/>
         <input type="text" name="username" class="form-control" placeholder="Username" required/>
         <input type="password" name="password" class="form-control" placeholder="password" required/>
-        <input type="submit" class="btnSubmit" value="Change" />
+        <input type="submit" class="btnSubmit" value="Reset" />
       </form>
     </div>
   </div>

@@ -1,4 +1,10 @@
 <?php
+require 'vendor/autoload.php';
+
+use Aws\Ses\SesClient;
+use Aws\Exception\AwsException;
+
+
 require_once("authchk.php");
 function csrf_verifynonce($action, $nonce){
 	if(isset($nonce) && $_SESSION['csrf_nonce'][$action] == $nonce){
@@ -13,7 +19,7 @@ function csrf_verifynonce($action, $nonce){
 $user = htmlspecialchars($_REQUEST["username"]);
 $email = htmlspecialchars($_REQUEST["email"]);
 $nonce = htmlspecialchars($_REQUEST["nonce"]);
-if(!csrf_verifynonce('forget_pw',$nonce)){header('location: login.php');}
+//if(!csrf_verifynonce('forget_pw',$nonce)){header('location: login.php');}
 
 $conn = new mysqli("localhost","root","toor", "IERG4210");
 
@@ -42,7 +48,32 @@ if($result->num_rows > 0){
 			$sql3 = $conn->prepare($q3);
 			$sql3->bind_param('ss', $digest, $user);
 			$sql3->execute();
-			mail($email, 'PASSWORD RESET', $message);	
+			$SesClient = new SesClient([
+				'profile' => 'default',
+				'version' => '2010-12-01',
+				'region' => 'us-east-1'
+			]);
+			$sender_email = 'boscoseto@gmail.com';
+			$recipent_email = [$email];
+			try{
+				$result = $SesClient->sendEmail([
+					'Destination' => [ 'ToAddresses' => $recipent_email,],
+					'ReplyToAddresses' => [$sender_email],
+					'Source' => $sender_email,
+					'Message' => [
+						'Body' => [
+							'Text' => [
+								'Charset' => 'UTF-8',
+								'Data' => $message,
+							],
+						],
+						'Subject' => [
+							'Charset' => 'UTF-8',
+							'Data' => 'Password Reset',
+						],
+					],
+				]);
+			}catch (AwsException $e){echo $e->getAwsErrorMessage();}
 		}
 		header("location: logout.php");
 	}else{
