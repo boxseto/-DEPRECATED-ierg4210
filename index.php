@@ -34,6 +34,7 @@ if(isset($_GET['st'])){
 </head>
 
 <body>
+<div id="fb-root"></div>
 <!-----------------    header    --------------------------------->
 	<header class="header">
 		<div class="user_header row">
@@ -69,7 +70,11 @@ if(isset($_GET['st'])){
                 <i class="fas fa-shopping-cart"></i>
               </a>
             </li>
+            <li>
+              <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+            </li>
           </ul>
+	<ul id="pagination"><li><a href="#today">Today's Choice</a></li><li><a href="#seller">Best sell</a></li></ul>
         </div>
       </div>
 		</div>
@@ -182,7 +187,7 @@ if(isset($_GET['st'])){
 
 
 <!--------------------    today's deal    --------------------------------------->
-<div class="row best_deal">
+<div id="today" class="row best_deal">
     <div class="row title">
       <div class="col-11">
         <h2>Today's deal</h2>
@@ -322,7 +327,7 @@ if(isset($_GET['st'])){
 
 
 <!--------------------    Best sellers    --------------------------------------->
-<div class="row best_sellers">
+<div id="seller" class="row best_sellers">
     <div class="row title">
       <div class="col">
         <h2>Best sellers</h2>
@@ -417,7 +422,13 @@ if(isset($_GET['st'])){
 <script src="import/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="import/OwlCarousel/dist/owl.carousel.min.js"></script>
 <script src="import/jquery-ui/jquery-ui.js"></script>
-
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/zh_HK/sdk.js#xfbml=1&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <!--self-written js-->
 <script src="js/index_theme.js"></script>
